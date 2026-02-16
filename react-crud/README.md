@@ -1,18 +1,45 @@
-# React + Vite
+# React CRUD User Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application for managing user data with CRUD operations. Built with extensibility in mind using configuration-driven forms.
 
-Currently, two official plugins are available:
+## Features
+- Create, Read, Update, Delete users
+- Form validation (required fields, email/phone formats)
+- Clean UI with Material-UI
+- Extensible field system
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
+1. Clone the repo: `git clone git@github.com:Heena-Kapoor/React_CRUD_Web.git`
+2. Install dependencies: `npm install`
+3. Start mock API: `npm run mock-api` (runs JSON-server on port 3001)
+4. Start app: `npm start` (runs on port 3000)
 
-## React Compiler
+## How to Add New Fields
+1. Edit `src/config/fieldsConfig.js`:
+   - Add a new object to `userFields` with `name`, `label`, `type`, `required`, and `validation` (using Yup).
+   - Example: For "Date of Birth", add `{ name: 'dateOfBirth', label: 'Date of Birth', type: 'date', required: false, validation: Yup.date().nullable() }`
+2. Update the mock API data in `db.json` to include the new field.
+3. The form and display components will automatically render the new field—no other code changes needed.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Assumptions and Design Decisions
+- Used Material-UI for UI components (clean and responsive).
+- Formik + Yup for validation (handles dynamic fields well).
+- JSON-server for mock API (easy to replace with real API).
+- No state management library (e.g., Redux) for simplicity; used simple props/state.
+- Refresh on save for simplicity; in production, use proper state updates.
+- Responsive design via Material-UI's built-in breakpoints.
 
-Note: This will impact Vite dev & build performances.
+## Deployment
+1. Build the app: `npm run build`
+2. Deploy to Vercel: `npm install -g vercel`, then `vercel` (or use Netlify/GitHub Pages).
+3. For mock API, deploy JSON-server separately or use a real API.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Evaluation Notes
+- React standards: Modular components, hooks, clean code.
+- Validation: Yup schemas ensure accuracy.
+- API: Axios with try/catch for errors/loading.
+- Extensibility: Config-driven, minimal changes for new fields.
+- UI/UX: Intuitive layout.
+- Deployment: Follow instructions above.
+- Git: Proper commits as described.
+- Bonus: Not using TypeScript (but could be added easily).
