@@ -11,8 +11,8 @@ A simple React application for managing user data with CRUD operations. Built wi
 ## Setup Instructions
 1. Clone the repo: `git clone git@github.com:Heena-Kapoor/React_CRUD_Web.git`
 2. Install dependencies: `npm install`
-3. Start mock API: `npm run mock-api` (runs JSON-server on port 3001)
-4. Start app: `npm start` (runs on port 3000)
+3. Start Server: `npm run server` (runs JSON-server on port 3001)
+4. Start app: `npm run dev` (runs on port 5173)
 
 ## How to Add New Fields
 1. Edit `src/config/fieldsConfig.js`:
